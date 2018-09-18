@@ -29,8 +29,8 @@ function SpGaPlugin(tracker, config) {
     var payload = model.get('hitPayload');
     originalSendHitTask(model);
 
-    var image = Image(1, 1)
-    image.src = path + "?" + payload
+    var image = new Image(1, 1);
+    image.src = path + "?" + payload;
   });
 }
 
