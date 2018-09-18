@@ -28,10 +28,9 @@ function SpGaPlugin(tracker, config) {
   tracker.set(sendHitTask, function(model) {
     var payload = model.get('hitPayload');
     originalSendHitTask(model);
-    var request = new XMLHttpRequest();
-    request.open('POST', path, true);
-    request.setRequestHeader("Content-type", "text/plain; charset=UTF-8")
-    request.send(payload);
+
+    var image = Image(1, 1)
+    image.src = path + "?" + payload
   });
 }
 
