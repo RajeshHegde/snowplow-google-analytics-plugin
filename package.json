@@ -1,10 +1,10 @@
 {
-  "name": "snowplow-google-analytics-plugin",
+  "name": "dblue-google-analytics-plugin",
   "version": "0.1.0",
-  "description": "A Google Analytics plugin for sending payloads to Snowplow.",
-  "main": "sp-ga-plugin.js",
+  "description": "A Google Analytics plugin for sending payloads to Dblue Collector",
+  "main": "dblue-ga-plugin.js",
   "scripts": {
-    "eslint": "eslint sp-ga-plugin.js"
+    "eslint": "eslint dblue-ga-plugin.js"
   },
   "repository": {
     "type": "git",

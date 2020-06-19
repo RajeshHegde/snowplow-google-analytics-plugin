@@ -1,7 +1,7 @@
 /*
- * Snowplow Google Analytics plugin.
+ * Dblue Google Analytics plugin.
  *
- * Copyright (c) 2017-2017 Snowplow Analytics Ltd. All rights reserved.
+ * Copyright (c) 2020 Dblue, Inc. All rights reserved.
  *
  * This program is licensed to you under the Apache License Version 2.0,
  * and you may not use this file except in compliance with the Apache License Version 2.0.
@@ -15,34 +15,38 @@
  * limitations there under.
  */
 
-function SpGaPlugin(tracker, config) {
-  this.endpoint = (config.endpoint.substr(-1) != '/') ? config.endpoint + '/' : config.endpoint;
+function DblueGaPlugin(tracker, config) {
+  this.endpoint = config.endpoint.substr(-1) != '/' ? config.endpoint + '/' : config.endpoint
 
-  var vendor = 'com.google.analytics';
-  var version = 'v1';
-  var path = this.endpoint + vendor + '/' + version;
+  var vendor = 'com.google.analytics'
+  var version = 'v1'
+  var path = this.endpoint + 'p';
 
-  var sendHitTask = 'sendHitTask';
+  var sendHitTask = 'sendHitTask'
 
   var originalSendHitTask = tracker.get(sendHitTask);
   tracker.set(sendHitTask, function(model) {
     var payload = model.get('hitPayload');
     originalSendHitTask(model);
 
-    var image = new Image(1, 1);
-    image.src = path + "?" + payload;
+    var request = new XMLHttpRequest();
+    request.open('POST', path, true);
+    request.setRequestHeader('Content-type', 'text/plain; charset=UTF-8');
+
+    payload += '&vendor=' + vendor + '&version=' + version;
+    request.send(payload);
   });
 }
 
 function providePlugin(pluginName, pluginConstructor) {
-  var ga = getGA();
+  var ga = getGA()
   if (typeof ga == 'function') {
-    ga('provide', pluginName, pluginConstructor);
+    ga('provide', pluginName, pluginConstructor)
   }
 }
 
 function getGA() {
-  return window[window['GoogleAnalyticsObject'] || 'ga'];
+  return window[window['GoogleAnalyticsObject'] || 'ga']
 }
 
-providePlugin('spGaPlugin', SpGaPlugin);
+providePlugin('dblueGaPlugin', DblueGaPlugin)
