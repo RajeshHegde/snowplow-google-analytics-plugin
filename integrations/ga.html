@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GA Integration Testing</title>
+
+  <!-- Google Analytics -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-Y', 'auto');
+
+    // Dblue Plugin Initialization
+    ga('require', 'dblueGaPlugin', { endpoint: 'https://us-central1-dblue-dev-235513.cloudfunctions.net' });
+    ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+  <!-- Dblue Google Analytics Plugin -->
+  <script async src="https://storage.googleapis.com/dblue-ga-plugin/1.0.0/dblue-ga-plugin.js"> </script>
+  <!-- End Dblue Google Analytics Plugin -->
+
+</head>
+
+<body>
+  Dblue Collector GA Integration Testing
+</body>
+
+</html>

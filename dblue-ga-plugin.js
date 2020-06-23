@@ -20,7 +20,7 @@ function DblueGaPlugin(tracker, config) {
 
   var vendor = 'com.google.analytics'
   var version = 'v1'
-  var path = this.endpoint + 'p';
+  var path = this.endpoint + 'c';
 
   var sendHitTask = 'sendHitTask'
 
@@ -31,7 +31,7 @@ function DblueGaPlugin(tracker, config) {
 
     var request = new XMLHttpRequest();
     request.open('POST', path, true);
-    request.setRequestHeader('Content-type', 'text/plain; charset=UTF-8');
+    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
     payload += '&vendor=' + vendor + '&version=' + version;
     request.send(payload);
