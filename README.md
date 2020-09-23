@@ -9,13 +9,13 @@ Place the following lines along with Google Analytics code.
   // usual GA code
 
   ga('create', 'UA-XXXXX-Y', 'auto')
-  ga('require', 'dblueGaPlugin', { endpoint: 'https://us-central1-dblue-dev-235513.cloudfunctions.net' })
+  ga('require', 'dblueGaPlugin', { endpoint: 'https://us-central1-dblue-data-collector.cloudfunctions.net' })
   ga('send', 'pageView')
 </script>
 <script async src="https://storage.googleapis.com/dblue-ga-plugin/1.0.0/dblue-ga-plugin.js"></script>
 ```
 
-Where `https://us-central1-dblue-dev-235513.cloudfunctions.net` is your Dblue Collector endpoint.
+Where `https://us-central1-dblue-data-collector.cloudfunctions.net` is your Dblue Collector endpoint.
 
 ## Deployment with Google Tag Manager
 
@@ -30,7 +30,7 @@ Create a new Custom JavaScript variable, and name it `customTask - Dblue duplica
 ```javascript
 function() {
   // Add your Dblue collector endpoint here
-  var endpoint = 'https://us-central1-dblue-dev-235513.cloudfunctions.net/c';
+  var endpoint = 'https://us-central1-dblue-data-collector.cloudfunctions.net/c';
 
   return function(model) {
     var vendor = 'com.google.analytics';
