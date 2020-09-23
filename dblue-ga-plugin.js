@@ -16,13 +16,13 @@
  */
 
 function DblueGaPlugin(tracker, config) {
-  this.endpoint = config.endpoint.substr(-1) != '/' ? config.endpoint + '/' : config.endpoint
+  this.endpoint = config.endpoint.substr(-1) != '/' ? config.endpoint + '/' : config.endpoint;
 
-  var vendor = 'com.google.analytics'
-  var version = 'v1'
+  var vendor = 'com.google.analytics';
+  var version = 'v1';
   var path = this.endpoint + 'c';
 
-  var sendHitTask = 'sendHitTask'
+  var sendHitTask = 'sendHitTask';
 
   var originalSendHitTask = tracker.get(sendHitTask);
   tracker.set(sendHitTask, function(model) {
@@ -39,14 +39,14 @@ function DblueGaPlugin(tracker, config) {
 }
 
 function providePlugin(pluginName, pluginConstructor) {
-  var ga = getGA()
+  var ga = getGA();
   if (typeof ga == 'function') {
-    ga('provide', pluginName, pluginConstructor)
+    ga('provide', pluginName, pluginConstructor);
   }
 }
 
 function getGA() {
-  return window[window['GoogleAnalyticsObject'] || 'ga']
+  return window[window['GoogleAnalyticsObject'] || 'ga'];
 }
 
-providePlugin('dblueGaPlugin', DblueGaPlugin)
+providePlugin('dblueGaPlugin', DblueGaPlugin);
