@@ -35,7 +35,6 @@ function() {
   return function(model) {
     var vendor = 'com.google.analytics';
     var version = 'v1';
-    var path = ((endpoint.substr(-1) !== '/') ? endpoint + '/' : endpoint);
 
     var globalSendTaskName = '_' + model.get('trackingId') + '_sendHitTask';
 
@@ -46,7 +45,7 @@ function() {
       originalSendHitTask(sendModel);
 
       var request = new XMLHttpRequest();
-      request.open('POST', path, true);
+      request.open('POST', endpoint, true);
       request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
       payload += '&vendor=' + vendor + '&version=' + version;
