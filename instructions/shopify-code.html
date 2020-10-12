@@ -1,21 +1,22 @@
 <script>
 
-  var trackerId = "UA-XXXXX-X";
-  var userIdDimensionIndex = 3;
+  var trackerId = "UA-XXXXX-X"; // Change this to your Google Analytics tracking code
+  var userIdDimensionIndex = 3; // Change this number to the index of your UserId Custom Dimension or null
 
-  // Create ga object if not exists
+  // Create ga object if not exists - do not change this line
   ga = window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
 
+  // Create tracker object if not exists - do not change this line
   ga('create', trackerId, 'auto')
 
   // Load Dblue Google Analytics Plugin
   ga('require', 'DblueGaPlugin', {
-    clientIdDimensionIndex: 1,
-    sessionIdDimensionIndex: 2,
-    hitIdDimensionIndex: 3,
-    hitTimestampDimensionIndex: 4,
-    hitTypeDimensionIndex: 5,
-    referrerDimensionIndex: 6,
+    clientIdDimensionIndex: 1, // Change this number to the index of your ClientID Custom Dimension or null
+    sessionIdDimensionIndex: 2, // Change this number to the index of your SessionId Custom Dimension or null
+    hitIdDimensionIndex: 4, // Change this number to the index of your HitId Custom Dimension or null
+    hitTimestampDimensionIndex: 5, // Change this number to the index of your HitTimestamp Custom Dimension or null
+    hitTypeDimensionIndex: 6, // Change this number to the index of your HitType Custom Dimension or null
+    referrerDimensionIndex: 7, // Change this number to the index of your DocumentReferrer Custom Dimension or null
     endpoint: 'https://us-central1-dblue-data-collector.cloudfunctions.net',
   })
 
@@ -23,7 +24,7 @@
   ga(function (tracker) {
     var customerId = getShopifyCustomerId();
 
-    if (customerId) {
+    if (typeof userIdDimensionIndex === "number" && customerId) {
       ga("set", "dimension" + userIdDimensionIndex, String(customerId));
     }
   });
