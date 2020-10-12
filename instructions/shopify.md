@@ -9,15 +9,27 @@ Go to the Google Analytics Admin view, in the Property section, go to Custom Def
 
    ![ClientId](./images/ga-custom-dimension-clientid.png)
 
-2. SessionID with the Session scope
+1. SessionID with the Session scope
    Click the +New Custom Dimension button. Add the name "SessionID" and choose the Session scope.
 
    ![SessionId](./images/ga-custom-dimension-sessionid.png)
 
-3. (Optional) UserID with the User scope.
+1. (Optional) UserID with the User scope.
    Click the +New Custom Dimension button. Add the name "UserID" and choose the User scope.
 
    ![UserId](./images/ga-custom-dimension-userid.png)
+
+1. (Optional) HitId with the Hit scope.
+   Click the +New Custom Dimension button. Add the name "HitId" and choose the Hit scope.
+
+1. (Optional) HitTimestamp with the Hit scope.
+   Click the +New Custom Dimension button. Add the name "HitTimestamp" and choose the Hit scope.
+
+1. (Optional) DocumentReferrer with the Hit scope.
+   Click the +New Custom Dimension button. Add the name "DocumentReferrer" and choose the Hit scope.
+
+1. (Optional) HitType with the Hit scope.
+   Click the +New Custom Dimension button. Add the name "HitType" and choose the Hit scope.
 
 After adding all custom dimensions, it will look similar to the below one.
 
@@ -36,10 +48,14 @@ After adding all custom dimensions, it will look similar to the below one.
 
 1. Change the following variables in the code snippet
 
-   - `GA_TRACKER_ID` - Your Google Analytics Tracking code
-   - `CLIENT_ID_DIMENSION_INDEX` - ClientId custom dimension index
-   - `SESSION_ID_DIMENSION_INDEX` - SessionId custom dimension index
-   - `USER_ID_DIMENSION_INDEX` - UserId custom dimension index
+   - `trackerId` - Your Google Analytics Tracking code
+   - `clientIdDimensionIndex` - ClientId custom dimension index
+   - `sessionIdDimensionIndex` - SessionId custom dimension index
+   - `userIdDimensionIndex` - UserId custom dimension index
+   - `hitIdDimensionIndex` - HitId custom dimension index
+   - `hitTimestampDimensionIndex` - HitTimestamp custom dimension index
+   - `hitTypeDimensionIndex` - HitType custom dimension index
+   - `referrerDimensionIndex` - DocumentReferrer custom dimension index
 
 1. Place the modified code snippet in the newly created `dblue-ga-tracker.liquid` file and click on `Save`
 
