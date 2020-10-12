@@ -1,32 +1,48 @@
 <script>
 
-  var GA_TRACKER_ID = "UA-XXXXX-X";
-  var CLIENT_ID_DIMENSION_INDEX = 1;
-  var SESSION_ID_DIMENSION_INDEX = 2;
-  var USER_ID_DIMENSION_INDEX = 3;
+  var trackerId = "UA-XXXXX-X";
+  var userIdDimensionIndex = 3;
 
   // Create ga object if not exists
   ga = window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
 
-  ga('create', GA_TRACKER_ID, 'auto')
+  ga('create', trackerId, 'auto')
+
+  // Load Dblue Google Analytics Plugin
+  ga('require', 'DblueGaPlugin', {
+    clientIdDimensionIndex: 1,
+    sessionIdDimensionIndex: 2,
+    hitIdDimensionIndex: 3,
+    hitTimestampDimensionIndex: 4,
+    hitTypeDimensionIndex: 5,
+    referrerDimensionIndex: 6,
+    endpoint: 'https://us-central1-dblue-data-collector.cloudfunctions.net',
+  })
 
   // Set custom dimensions
   ga(function (tracker) {
-    var clientId = "GA" + String(tracker.get("clientId"));
+    var customerId = getShopifyCustomerId();
 
-    ga("set", "dimension" + CLIENT_ID_DIMENSION_INDEX, clientId);
-
-    ga("set", "dimension" + SESSION_ID_DIMENSION_INDEX, new Date().getTime() + "." + Math.random().toString(36).substring(5));
-
-    if (__st && __st["cid"]) {
-      ga("set", "dimension" + USER_ID_DIMENSION_INDEX, "shopify" + String(__st["cid"]));
+    if (customerId) {
+      ga("set", "dimension" + userIdDimensionIndex, String(customerId));
     }
   });
 
-  // Load Dblue parallel tracker
-  ga('require', 'dblueGaPlugin', { endpoint: 'https://us-central1-dblue-data-collector.cloudfunctions.net' })
+  function getShopifyCustomerId() {
+    try {
+      return __st.cid;
+    } catch (e) { }
 
+    try {
+      return ShopifyAnalytics.meta.page.customerId;
+    } catch (e) { }
 
+    try {
+      return ShopifyAnalytics.lib.user().traits().uniqToken;
+    } catch (e) { }
+
+    return null;
+  }
 
 </script>
-<script async src="https://storage.googleapis.com/dblue-ga-plugin/1.0.0/dblue-ga-plugin.js"></script>
+<script async src="https://storage.googleapis.com/dblue-ga-plugin/1.1.0/dblue-ga-plugin.js"></script>

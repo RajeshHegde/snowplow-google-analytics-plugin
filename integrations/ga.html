@@ -18,14 +18,26 @@
     ga('create', 'UA-XXXXX-Y', 'auto');
 
     // Dblue Plugin Initialization
-    ga('require', 'dblueGaPlugin', { endpoint: 'https://us-central1-dblue-data-collector.cloudfunctions.net' });
+    ga('require', 'DblueGaPlugin', {
+      clientIdDimensionIndex: 1,
+      sessionIdDimensionIndex: 2,
+      hitIdDimensionIndex: 3,
+      hitTimestampDimensionIndex: 4,
+      hitTypeDimensionIndex: 5,
+      referrerDimensionIndex: 6,
+      endpoint: 'https://us-central1-dblue-data-collector.cloudfunctions.net',
+    });
+
     ga('send', 'pageview');
+
+    ga('send', 'event', 'Video', 'play', 'cats.mp4');
 
   </script>
   <!-- End Google Analytics -->
 
   <!-- Dblue Google Analytics Plugin -->
-  <script async src="https://storage.googleapis.com/dblue-ga-plugin/1.0.0/dblue-ga-plugin.js"> </script>
+  <script async src="https://storage.googleapis.com/dblue-ga-plugin/1.1.0/dblue-ga-plugin.js"> </script>
+  <!-- <script async src="/dblue-ga-plugin.js"> </script> -->
   <!-- End Dblue Google Analytics Plugin -->
 
 </head>
