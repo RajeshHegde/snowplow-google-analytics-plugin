@@ -57,11 +57,6 @@ function DblueGaPlugin(tracker, config) {
     if (typeof config.hitTypeDimensionIndex === 'number') {
       model.set('dimension' + config.hitTypeDimensionIndex, model.get('hitType'))
     }
-
-    // Set full referrer
-    if (typeof config.referrerDimensionIndex === 'number') {
-      model.set('dimension' + config.referrerDimensionIndex, document.referrer)
-    }
   })
 
   if (config.endpoint) {

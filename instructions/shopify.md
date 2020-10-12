@@ -25,9 +25,6 @@ Go to the Google Analytics Admin view, in the Property section, go to Custom Def
 1. (Optional) HitTimestamp with the Hit scope.
    Click the +New Custom Dimension button. Add the name "HitTimestamp" and choose the Hit scope.
 
-1. (Optional) DocumentReferrer with the Hit scope.
-   Click the +New Custom Dimension button. Add the name "DocumentReferrer" and choose the Hit scope.
-
 1. (Optional) HitType with the Hit scope.
    Click the +New Custom Dimension button. Add the name "HitType" and choose the Hit scope.
 
@@ -55,7 +52,6 @@ After adding all custom dimensions, it will look similar to the below one.
    - `hitIdDimensionIndex` - HitId custom dimension index
    - `hitTimestampDimensionIndex` - HitTimestamp custom dimension index
    - `hitTypeDimensionIndex` - HitType custom dimension index
-   - `referrerDimensionIndex` - DocumentReferrer custom dimension index
 
 1. Place the modified code snippet in the newly created `dblue-ga-tracker.liquid` file and click on `Save`
 
