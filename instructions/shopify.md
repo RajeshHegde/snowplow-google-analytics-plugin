@@ -35,7 +35,7 @@ After adding all custom dimensions, it will look similar to the below one.
 ## 2. Set up ClientId and SessionId tracking on Shopify Store
 
 1. Go to `Online Store > Themes`.
-1. Find Theme libary `Actions` dropdown, click on `Edit code`.
+1. Find Theme libary `Actions` dropdown, click on `Edit code`. Duplicate the theme before editing for backup purpose.
 
    ![Edit code](./images/shopify-theme-edit-code.png)
 
@@ -60,8 +60,6 @@ After adding all custom dimensions, it will look similar to the below one.
 1. Select `theme.liquid` file from the sidebar, place `{% include 'dblue-ga-tracker' %}` code just before the closing of `</head>` tag and click on `Save`
 
    ![Include snippet](./images/shopify-include-dblue-ga-tracker-snippet.png)
-
-1. Go back to `Online Store > Themes`, find Theme libary `Actions` dropdown, click on `Publish`.
 
 1. Also, place the content of `dblue-ga-tracker.liquid` in `Settings > Checkount` Additional scripts box, and click on `Save`.
 
